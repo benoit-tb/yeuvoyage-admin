@@ -1,0 +1,57 @@
+AppBundle\Entity\Actualite:
+    type: entity
+    table: yv_actualite
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        titre:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        commentaire:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        date:
+            type: datetime
+            nullable: false
+        siteWeb:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: site_web
+        idType:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: '1 : infos, 2 : ok, 3: error 4 : warning'
+            column: id_type
+        dateDebutAffichage:
+            type: date
+            nullable: false
+            column: date_debut_affichage
+        dateFinAffichage:
+            type: date
+            nullable: false
+            column: date_fin_affichage
+        afficherAccueil:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+            column: afficher_accueil
+    lifecycleCallbacks: {  }

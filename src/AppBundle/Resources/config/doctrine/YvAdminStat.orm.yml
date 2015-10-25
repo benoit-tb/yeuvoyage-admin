@@ -1,0 +1,44 @@
+AppBundle\Entity\YvAdminStat:
+    type: entity
+    table: yv_admin_stat
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nbTelechargementPrec:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: nb_telechargement_prec
+        nbTelechargement:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: nb_telechargement
+        nbCommentaires:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: nb_commentaires
+        nbNotes:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: nb_notes
+        moyenneNotes:
+            type: decimal
+            nullable: false
+            precision: 3
+            scale: 2
+            column: moyenne_notes
+    lifecycleCallbacks: {  }

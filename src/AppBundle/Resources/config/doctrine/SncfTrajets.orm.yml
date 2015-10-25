@@ -1,0 +1,54 @@
+AppBundle\Entity\SncfTrajets:
+    type: entity
+    table: yv_sncf_trajets
+    indexes:
+        destination:
+            columns:
+                - id_destination
+                - id_provenance
+        provenance:
+            columns:
+                - id_provenance
+        IDX_3134184926D4F35D:
+            columns:
+                - id_destination
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        horaireDepart:
+            type: datetime
+            nullable: false
+            column: horaire_depart
+        horaireArrivee:
+            type: datetime
+            nullable: false
+            column: horaire_arrivee
+    manyToOne:
+        destination:
+            targetEntity: Ville
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_destination:
+                    referencedColumnName: id
+            orphanRemoval: false
+        provenance:
+            targetEntity: Ville
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_provenance:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

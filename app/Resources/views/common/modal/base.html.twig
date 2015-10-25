@@ -1,0 +1,20 @@
+{# Base de la construction d'une pop up #}
+<div id="{% if modalId is defined %}{{ modalId }}{% endif %}" class="modal fade {% if modalClass is defined %}{{ modalClass }}{% endif %}" style="display: none;" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+	<div class="modal-dialog">
+		<div class="modal-content">
+            {% if modalTitle is defined %}
+			<div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button"><i class="fa fa-times"></i></button>
+				<h4 class="modal-title">{{ modalTitle }}</h4>
+			</div>
+            {% endif %}
+			<div class="modal-body">
+                {% block modalBody %}{% endblock %}
+			</div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Annuler</button>
+                <button id="" class="btn btn-primary btn-save-popup" type="button">Modifier</button>
+            </div>
+		</div>
+	</div>
+</div>

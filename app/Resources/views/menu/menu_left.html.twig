@@ -1,0 +1,22 @@
+<div class="nav-collapse sidebar-nav collapse navbar-collapse bs-navbar-collapse">
+	<ul class="nav nav-tabs nav-stacked main-menu">
+		<li><a href="{{ path('yeu_voyage_dashboard') }}"><i class="fa fa-dashboard"></i><span class="hidden-sm"> Tableau de bord</span></a></li>
+		<li>
+			<a href="#" class="dropmenu"><i class="fa fa-ship"></i><span class="hidden-sm"> Traversées</span> <span class="label"><i class="fa fa-chevron-down"></i></span></a>
+			<ul>
+				<li><a href="{{ path('yeu_voyage_traversee_afficher') }}" class="submenu"><i class="fa fa-bar-chart-o"></i><span class="hidden-sm"> Consultation</span></a></li>
+                <li><a href="{{ path('yeu_voyage_traversee_ajouter') }}" class="submenu"><i class="fa fa-bar-chart-o"></i><span class="hidden-sm"> Ajout</span></a></li>
+                <li><a href="{{ path('yeu_voyage_traversee_importer') }}" class="submenu"><i class="fa fa-upload"></i><span class="hidden-sm"> Import</span></a></li>
+			</ul>
+		</li>
+        <li>
+            <a href="#" class="dropmenu"><i class="fa fa-bus"></i><span class="hidden-sm"> Correspondances SNCF</span> <span class="label"><i class="fa fa-chevron-down"></i></span></a>
+            <ul>
+                <li><a href="{{ path('yeu_voyage_correspondance_sncf_afficher') }}" class="submenu"><i class="fa fa fa-bus"></i><span class="hidden-sm"> Consultation</span></a></li>
+                <li><a href="{{ path('yeu_voyage_correspondance_sncf_importer') }}" class="submenu"><i class="fa fa-upload"></i><span class="hidden-sm"> Import</span></a></li>
+            </ul>
+        </li>
+        <li><a href="#"><i class="fa fa-info-circle"></i><span class="hidden-sm"> Actualités</span></a></li>
+        <li><a href="#"><i class="fa fa-info-circle"></i><span class="hidden-sm"> Informations</span></a></li>
+    </ul>
+</div>

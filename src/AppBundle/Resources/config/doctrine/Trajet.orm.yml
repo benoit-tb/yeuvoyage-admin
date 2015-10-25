@@ -1,0 +1,87 @@
+AppBundle\Entity\Trajet:
+    type: entity
+    table: yv_trajet
+    indexes:
+        destination:
+            columns:
+                - id_destination
+        provenance:
+            columns:
+                - id_provenance
+        id_bateau:
+            columns:
+                - id_type_bateau
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        horaire:
+            type: datetime
+            nullable: false
+        facultatif:
+            type: boolean
+            nullable: false
+        statut:
+            type: integer
+            nullable: false
+            options:
+                comment: '0 : OK - 1 : Complet - 2 : Retard - 3 Annulé - 4 : Supplémentaire'
+                default: 0
+        infosStatut:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: infos_statut
+        horaireOrigine:
+            type: string
+            nullable: true
+            column: horaire_origine
+    manyToOne:
+        destination:
+            targetEntity: Ville
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_destination:
+                    referencedColumnName: id
+            orphanRemoval: false
+        provenance:
+            targetEntity: Ville
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_provenance:
+                    referencedColumnName: id
+            orphanRemoval: false
+        typeBateau:
+            targetEntity: TypeBateau
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_bateau:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        idUtilisateur:
+            targetEntity: YvUtilisateur
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: idTrajet
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

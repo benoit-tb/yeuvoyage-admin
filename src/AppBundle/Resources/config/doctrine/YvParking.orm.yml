@@ -1,0 +1,124 @@
+AppBundle\Entity\YvParking:
+    type: entity
+    table: yv_parking
+    indexes:
+        id_type_parking:
+            columns:
+                - id_type_parking
+        id_gare:
+            columns:
+                - id_gare
+        id_ville:
+            columns:
+                - id_ville
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idVille:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_ville
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        latitude:
+            type: decimal
+            nullable: false
+            precision: 8
+            scale: 6
+        longitude:
+            type: decimal
+            nullable: false
+            precision: 8
+            scale: 6
+        zoommap:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: zoomMap
+        distanceGare:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: distance_gare
+        adresse:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        telephone:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+        fax:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+        mail:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+        siteWeb:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: site_web
+        dateOuverture:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: date_ouverture
+        prestations:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        idTypeParking:
+            targetEntity: YvParkingType
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_parking:
+                    referencedColumnName: id
+            orphanRemoval: false
+        idGare:
+            targetEntity: YvGare
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_gare:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

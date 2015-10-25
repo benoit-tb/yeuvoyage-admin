@@ -1,0 +1,47 @@
+AppBundle\Entity\YvAdminUserAction:
+    type: entity
+    table: yv_admin_user_action
+    indexes:
+        id_user:
+            columns:
+                - id_user
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idUser:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_user
+        typeItem:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: type_item
+        idItem:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_item
+        typeAction:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: type_action
+        date:
+            type: datetime
+            nullable: false
+    lifecycleCallbacks: {  }

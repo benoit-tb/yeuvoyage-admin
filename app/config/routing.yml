@@ -1,0 +1,90 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+yeu_voyage_dashboard:
+    path:      /
+    defaults:  { _controller: AppBundle:Default:index }
+
+#
+# Routing partie gestion des traversées
+#
+yeu_voyage_traversee_index:
+    path:      /traversee/
+    defaults:  { _controller: AppBundle:Traversee:index }
+
+yeu_voyage_traversee_detail_id:
+    path:      /traversee/detail/
+    defaults:  { _controller: AppBundle:Traversee:getTrajetById }
+    options:
+        expose: true
+
+yeu_voyage_traversee_sauvegarder_nouveau_horaire:
+    path:      /traversee/sauvegarder_horaires/
+    defaults:  { _controller: AppBundle:Traversee:updateHoursTrajet }
+    options:
+        expose: true
+
+yeu_voyage_traversee_annuler:
+    path:      /traversee/annuler/
+    defaults:  { _controller: AppBundle:Traversee:annulerTraversee }
+    options:
+        expose: true
+
+yeu_voyage_traversee_activation_horaire_facultatif:
+    path:      /traversee/activation_horaire/
+    defaults:  { _controller: AppBundle:Traversee:activerHoraireFacultatif }
+    options:
+        expose: true
+
+yeu_voyage_traversee_suppression_horaire_supplementaire:
+    path:      /traversee/suppression_horaire_supplementaire/
+    defaults:  { _controller: AppBundle:Traversee:supprimerHoraireSupplementaire }
+    options:
+        expose: true
+
+yeu_voyage_traversee_retablir_horaire_modifie:
+    path:      /traversee/retablir_horaire_modifie/
+    defaults:  { _controller: AppBundle:Traversee:retablirHoraireModifie }
+    options:
+        expose: true
+
+yeu_voyage_traversee_retablir_trajet:
+    path:      /traversee/retablir_trajet/
+    defaults:  { _controller: AppBundle:Traversee:retablirTrajet }
+    options:
+        expose: true
+
+yeu_voyage_traversee_afficher:
+    path:      /traversee/afficher/
+    defaults:  { _controller: AppBundle:Traversee:afficher }
+
+yeu_voyage_traversee_ajouter:
+    path:      /traversee/ajouter/
+    defaults:  { _controller: AppBundle:Traversee:ajouter }
+
+yeu_voyage_traversee_importer:
+    path:      /traversee/importer/
+    defaults:  { _controller: AppBundle:Traversee:importer }
+
+yeu_voyage_traversee_exporter:
+    path:      /traversee/export/
+    defaults:  { _controller: AppBundle:Traversee:export }
+
+#
+# Routing partie gestion des correspondances SNCF
+#
+yeu_voyage_correspondance_sncf_index:
+    path:      /correspondance_sncf/
+    defaults:  { _controller: AppBundle:CorrespondanceSncf:index }
+
+yeu_voyage_correspondance_sncf_afficher:
+    path:      /correspondance_sncf/afficher/
+    defaults:  { _controller: AppBundle:CorrespondanceSncf:afficher }
+
+yeu_voyage_correspondance_sncf_importer:
+    path:      /correspondance_sncf/importer/
+    defaults:  { _controller: AppBundle:CorrespondanceSncf:importer }

@@ -1,0 +1,141 @@
+AppBundle\Entity\YvUtilisateur:
+    type: entity
+    table: yv_utilisateur
+    uniqueConstraints:
+        unique_id:
+            columns:
+                - unique_id
+        email:
+            columns:
+                - email
+    id:
+        uid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        uniqueId:
+            type: string
+            nullable: false
+            length: 23
+            options:
+                fixed: false
+            column: unique_id
+        name:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+        encryptedPassword:
+            type: string
+            nullable: false
+            length: 80
+            options:
+                fixed: false
+            column: encrypted_password
+        salt:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+        civilite:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        prenom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+        autoriseCompagnieYeuCont:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: autorise_compagnie_yeu_cont
+        autoriseCompagnieVendeenne:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: autorise_compagnie_vendeenne
+        autoriseNgv:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: autorise_ngv
+        autoriseNr:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: autorise_nr
+        autoriseCargo:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: autorise_cargo
+        autoriseHoraireFacultatif:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: autorise_horaire_facultatif
+        autorisePlacement:
+            type: string
+            nullable: false
+            length: null
+            options:
+                fixed: false
+                default: '0'
+            column: autorise_placement
+    manyToMany:
+        idTrajet:
+            targetEntity: Trajet
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idUtilisateur
+            joinTable:
+                name: yv_utilisateur_trajet
+                joinColumns:
+                    -
+                        name: id_utilisateur
+                        referencedColumnName: uid
+                inverseJoinColumns:
+                    -
+                        name: id_trajet
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }

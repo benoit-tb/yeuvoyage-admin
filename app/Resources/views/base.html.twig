@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Yeu voyage{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.min.css') }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/jquery.dataTables.min.css') }}" />
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/bootstrap-datetimepicker.css') }}" />
+    {% endblock %}
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+    {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+
+</head>
+<body>
+
+{# Inclusion du menu top #}
+<header class="navbar">
+    {% include 'menu/menu_top.html.twig' %}
+</header>
+
+{# Container #}
+<div class="container">
+    <div class="row">
+
+        {# Inclusion du menu gauche #}
+        <div class="col-lg-2 col-sm-1" id="sidebar-left">
+            {% include 'menu/menu_left.html.twig' %}
+        </div>
+
+        {# Inclusion du bloc content #}
+        <div id="content" class="col-lg-10 col-sm-11">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+{% block modals %}{% endblock %}
+
+{% block javascripts %}
+    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+    <script type="text/javascript" src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+
+{% endblock %}
+</body>
+</html>

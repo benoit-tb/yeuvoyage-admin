@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+
+            <div class="box">
+                {# Header #}
+                <div class="box-header">
+                    <h2>
+                        <i class="fa fa-search"></i> Critères de recherche
+                    </h2>
+                    <div class="box-icon">
+                        <a class="btn-minimize" href="form-elements.html#"><i class="fa fa-chevron-up"></i></a>
+                    </div>
+                </div>
+
+                {# Formulaire #}
+                <div class="box-content search-form">
+                    <form class="form-inline" method="POST" {{ form_enctype(form) }}>
+                        {{ form(form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Tableau de résultats #}
+    <div class="row">
+        <div class="col-lg-12">
+            {% if results|length >= 2000 %}
+                <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    Trop de résultats. Utiliser les critères de recherche pour filter les résultats.
+                </div>
+            {% endif %}
+
+            <div class="box">
+                <div data-original-title="" class="box-header">
+                    <h2><i class="fa fa-align-justify"></i><span class="break"></span>Résultats</h2>
+                </div>
+                <div class="box-content">
+                    <table id="table-results-correspondance-sncf" class="table table-striped table-bordered bootstrap-datatable datatable dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Provenance</th>
+                            <th>Destination</th>
+                            <th>Date</th>
+                            <th>Départ</th>
+                            <th>Arrivée</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for result in results %}
+                            <tr class="{% if loop.index is odd %} odd {% else %} even {% endif %}">
+                                <td>{{ result.id }}</td>
+                                <td>{{ result.provenance.nom }}</td>
+                                <td>{{ result.destination.nom }}</td>
+                                <td>{{ result.horaireDepart|date('d/m/Y') }}</td>
+                                <td>{{ result.horaireDepart|date('H:i') }}</td>
+                                <td>{{ result.horaireArrivee|date('H:i') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

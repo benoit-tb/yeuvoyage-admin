@@ -1,0 +1,41 @@
+AppBundle\Entity\TypeBateau:
+    type: entity
+    table: yv_type_bateau
+    indexes:
+        compagnie:
+            columns:
+                - id_compagnie
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        dureeTraversee:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: duree_traversee
+    manyToOne:
+        compagnie:
+            targetEntity: Compagnie
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_compagnie:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

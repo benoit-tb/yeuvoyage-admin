@@ -1,0 +1,77 @@
+AppBundle\Entity\YvGare:
+    type: entity
+    table: yv_gare
+    indexes:
+        id_ville:
+            columns:
+                - id_ville
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        adresse:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        autreWifi:
+            type: boolean
+            nullable: false
+            column: autre_wifi
+        autreSncf:
+            type: boolean
+            nullable: false
+            column: autre_sncf
+        mapZoom:
+            type: boolean
+            nullable: false
+            column: map_zoom
+        mapLatitude:
+            type: decimal
+            nullable: false
+            precision: 8
+            scale: 6
+            column: map_latitude
+        mapLongitude:
+            type: decimal
+            nullable: false
+            precision: 8
+            scale: 6
+            column: map_longitude
+    manyToOne:
+        idVille:
+            targetEntity: Ville
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_ville:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        idCompagnie:
+            targetEntity: Compagnie
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: idGare
+            joinTable:
+                name: yv_compagnie_gare
+                joinColumns:
+                    -
+                        name: id_gare
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: id_compagnie
+                        referencedColumnName: id
+            orderBy: null
+    lifecycleCallbacks: {  }
