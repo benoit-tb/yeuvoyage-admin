@@ -88,3 +88,14 @@ yeu_voyage_correspondance_sncf_afficher:
 yeu_voyage_correspondance_sncf_importer:
     path:      /correspondance_sncf/importer/
     defaults:  { _controller: AppBundle:CorrespondanceSncf:importer }
+
+#
+# Routing partie gestion des actualites
+#
+yeu_voyage_actualite_index:
+    path:      /actualite/
+    defaults:  { _controller: AppBundle:Actualite:index }
+
+yeu_voyage_actualite_afficher:
+    path:      /actualite/afficher/
+    defaults:  { _controller: AppBundle:Actualite:afficher }
