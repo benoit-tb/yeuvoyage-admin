@@ -33,9 +33,9 @@ class Actualite
     private $siteWeb;
 
     /**
-     * @var integer
+     * @var \AppBundle\Entity\ActualiteType
      */
-    private $idType;
+    private $type;
 
     /**
      * @var \DateTime
@@ -160,27 +160,27 @@ class Actualite
     }
 
     /**
-     * Set idType
+     * Set type
      *
-     * @param integer $idType
+     * @param \AppBundle\Entity\ActualiteType $type
      *
-     * @return Actualite
+     * @return Trajet
      */
-    public function setIdType($idType)
+    public function setType(\AppBundle\Entity\ActualiteType $type = null)
     {
-        $this->idType = $idType;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get idType
+     * Get type
      *
-     * @return integer
+     * @return \AppBundle\Entity\ActualiteType
      */
-    public function getIdType()
+    public function getType()
     {
-        return $this->idType;
+        return $this->type;
     }
 
     /**

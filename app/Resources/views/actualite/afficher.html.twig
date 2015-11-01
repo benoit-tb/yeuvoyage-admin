@@ -74,13 +74,18 @@
                             <tr class="{% if loop.index is odd %} odd {% else %} even {% endif %}">
                                 <td>{{ result.id }}</td>
                                 <td>{{ result.titre }}</td>
-                                <td>{{ result.description }}</td>
-                                <td>{{ result.siteWeb }}</td>
+                                <td>{{ result.commentaire }}</td>
+                                <td align="center">{% if result.siteWeb != '' %}<a href="http://{{ result.siteWeb }}" target="_blank"  data-toggle="tooltip" data-placement="top" title="{{ result.siteWeb }}" ><i class="glyphicon glyphicon-globe"></i></a>{% endif %}</td>
                                 <td>{{ result.date|date('d/m/Y') }}</td>
-                                <td>-</td>
-                                <td>{{ result.afficherAccueil }}</td>
-                                <td></td>
-                                <td>--</td>
+                                <td>{{ result.type.label }}</td>
+                                <td align="center">{% if result.afficherAccueil == true %}<i class="glyphicon glyphicon-ok"></i>{% endif %}</td>
+                                <td>
+                                    <span class="label {% if "now"|date("Y-m-d") > result.dateFinAffichage|date('Y-m-d') %}label-warning{% elseif "now"|date("Y-m-d") < result.dateDebutAffichage|date('Y-m-d') %}label-info{% elseif "now"|date("Y-m-d") >= result.dateDebutAffichage|date('Y-m-d') and "now"|date("Y-m-d") <= result.dateFinAffichage|date('Y-m-d') %}label-success{% endif %}" data-toggle="tooltip" data-html="true" data-placement="top" title="Déb : {{ result.dateDebutAffichage|date('d/m/Y') }}<br /> Fin : {{ result.dateFinAffichage|date('d/m/Y') }}">{% if "now"|date("Y-m-d") > result.dateFinAffichage|date('Y-m-d') %}Terminé{% elseif "now"|date("Y-m-d") < result.dateDebutAffichage|date('Y-m-d') %}Prochainement{% elseif "now"|date("Y-m-d") >= result.dateDebutAffichage|date('Y-m-d') and "now"|date("Y-m-d") <= result.dateFinAffichage|date('Y-m-d') %}En ligne{% endif %}</span>
+                                </td>
+                                <td nowrap>
+                                    <button type="button" class="btn btn-info btn-modification-actualite" id="{{ result.id }}" data-toggle="tooltip" data-placement="top" title="Modifier l'actualité"><i class="glyphicon glyphicon-edit"></i></button>
+                                    <button type="button" class="btn btn-danger btn-suppression-actualite" id="{{ result.id }}" data-toggle="tooltip" data-placement="top" title="Supprimer l'actualité"><i class="glyphicon glyphicon-remove"></i></button>
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>

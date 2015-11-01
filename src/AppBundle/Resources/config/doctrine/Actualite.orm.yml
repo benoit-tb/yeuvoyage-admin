@@ -33,13 +33,6 @@ AppBundle\Entity\Actualite:
             options:
                 fixed: false
             column: site_web
-        idType:
-            type: integer
-            nullable: false
-            options:
-                unsigned: false
-                comment: '1 : infos, 2 : ok, 3: error 4 : warning'
-            column: id_type
         dateDebutAffichage:
             type: date
             nullable: false
@@ -54,4 +47,15 @@ AppBundle\Entity\Actualite:
             options:
                 default: '0'
             column: afficher_accueil
+    manyToOne:
+        type:
+            targetEntity: ActualiteType
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }
