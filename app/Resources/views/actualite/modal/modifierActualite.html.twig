@@ -1,0 +1,41 @@
+{% extends 'common/modal/base.html.twig' %}
+{% block modalBody %}
+    <div class="form-group">
+        <label for="update-titre">Titre</label>
+        <input type="text" class="form-control" id="update-titre">
+    </div>
+    <div class="form-group">
+        <label for="update-commentaire">Commentaire</label>
+        <textarea class="form-control" id="update-commentaire"></textarea>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <div class="form-group">
+                    <label for="update-start-date">Date début affichage</label>
+                    <input type="text" class="form-control date-picker" id="update-start-date">
+                </div>
+            </td>
+            <td>
+                <div class="form-group" style="padding-left: 10px">
+                    <label for="update-end-date">Date fin affichage</label>
+                    <input type="text" class="form-control date-picker" id="update-end-date">
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <label for="update-afficher-accueil">
+            <input type="checkbox" value="1" id="update-afficher-accueil"> Afficher sur l'écran d'accueil
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="update-type">Type d'actualité</label>
+        <select id="update-type" class="form-control">
+            {% for actualiteType in actualiteTypes %}
+            <option value="{{ actualiteType.id }}">{{ actualiteType.label }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <input type="hidden" id="actualite-id" name="actualite-id" value="0" />
+{% endblock %}

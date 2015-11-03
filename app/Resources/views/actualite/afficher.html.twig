@@ -96,6 +96,12 @@
     </div>
 {% endblock %}
 
+{% block modals %}
+    {% include "::common/loading.html.twig" %}
+    {% include "::actualite/modal/confirmeSuppression.html.twig"  with {'modalClass': 'popup-confirm-suppression', 'modalTitle': 'Suppression actualité'} %}
+    {% include "::actualite/modal/modifierActualite.html.twig"  with {'modalClass': 'popup-modification-actualite', 'modalTitle': 'Modification actualité'} %}
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript" src="{{ asset('js/actualite.js') }}"></script>

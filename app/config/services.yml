@@ -23,3 +23,7 @@ services:
     correspondance_sncf_service:
         class: AppBundle\Service\CorrespondanceSncfService
         arguments: [@doctrine.orm.entity_manager]
+
+    actualite_service:
+        class: AppBundle\Service\ActualiteService
+        arguments: [@doctrine.orm.entity_manager]

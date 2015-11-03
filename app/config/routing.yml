@@ -99,3 +99,15 @@ yeu_voyage_actualite_index:
 yeu_voyage_actualite_afficher:
     path:      /actualite/afficher/
     defaults:  { _controller: AppBundle:Actualite:afficher }
+
+yeu_voyage_actualite_supprimer:
+    path:      /actualite/annuler/
+    defaults:  { _controller: AppBundle:Actualite:supprimerActualite }
+    options:
+        expose: true
+
+yeu_voyage_actualite_detail:
+    path:      /actualite/detail/
+    defaults:  { _controller: AppBundle:Actualite:getActualiteById }
+    options:
+        expose: true

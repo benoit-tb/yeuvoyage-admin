@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Actualite;
 use AppBundle\Form\Type\Actualite\SearchFormType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Controller\AController;
 
@@ -28,6 +30,7 @@ class ActualiteController extends AController
         $form = $this->createForm (new SearchFormType());
 
         $actualiteRepository = $em->getRepository('AppBundle:Actualite');
+        $actualiteTypeRepository = $em->getRepository('AppBundle:ActualiteType');
         $results = $actualiteRepository->createQueryBuilder('a')->getQuery()->getResult();
 
         // Post du formulaire
@@ -35,13 +38,60 @@ class ActualiteController extends AController
             $form->submit($request->request->get($form->getName()));
 
             if ($form->isValid()) {
-                /*$data = $form->getData();
-                $trajetService = $this->get('trajet_service');
-                $results = $trajetService->getTrajets($data);*/
+                $data = $form->getData();
+                $actualiteService = $this->get('actualite_service');
+                $results = $actualiteService->getActualites($data);
             }
         }
 
+        $actualiteTypes = $actualiteTypeRepository->findAll();
+
         // replace this example code with whatever you need
-        return $this->render('actualite/afficher.html.twig', array('results'=> $results,'form' => $form->createView()));
+        return $this->render('actualite/afficher.html.twig', array(
+            'results'=> $results,
+            'actualiteTypes' => $actualiteTypes,
+            'form' => $form->createView())
+        );
     }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function supprimerActualiteAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        if ($request->isMethod ( 'POST' )) {
+            $actualiteService = $this->get('actualite_service');
+
+            $actualite = $actualiteService->getActualiteById($request->request->get ( 'actualite_id' ));
+
+            if (!is_null($actualite) && $actualite instanceof Actualite){
+                $em->remove($actualite);
+                $em->flush();
+                $this->addFlash('success', 'L\'actualité a correctement été supprimée.');
+                return new JsonResponse(array('succes' => "1", 'error' => '0'));
+            }
+        }
+        return new JsonResponse(array('succes' => "0", 'error' => '1'));
+    }
+
+    public function getActualiteByIdAction(Request $request){
+        if ($request->isMethod ( 'POST' )) {
+            $actualiteService = $this->get('actualite_service');
+
+            $actualite = $actualiteService->getActualiteById($request->request->get ( 'actualite_id' ));
+
+            if (!is_null($actualite) && $actualite instanceof Actualite){
+                $result['titre'] = $actualite->getTitre();
+                $result['commentaire'] = $actualite->getCommentaire();
+                $result['start_date'] = $actualite->getDateDebutAffichage()->format('Y-m-d');
+                $result['end_date'] = $actualite->getDateFinAffichage()->format('Y-m-d');
+                $result['afficher_accueil'] = $actualite->getAfficherAccueil();
+                $result['type'] = $actualite->getType()->getLabel();
+                return new JsonResponse($result);
+            }
+        }
+        return new JsonResponse(array('succes' => "0", 'error' => '1'));
+    }
+
 }
