@@ -111,3 +111,9 @@ yeu_voyage_actualite_detail:
     defaults:  { _controller: AppBundle:Actualite:getActualiteById }
     options:
         expose: true
+
+yeu_voyage_actualite_modifier:
+    path:      /actualite/modifier/
+    defaults:  { _controller: AppBundle:Actualite:modifierActualite }
+    options:
+        expose: true

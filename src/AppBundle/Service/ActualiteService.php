@@ -15,6 +15,8 @@ class ActualiteService extends AService{
 
     private $actualiteRepository;
 
+    private $actualiteTypeRepository;
+
     /**
      * Constructeur
      * @param ObjectManager $entityManager
@@ -22,6 +24,7 @@ class ActualiteService extends AService{
     public function __construct(ObjectManager $entityManager){
         $this->entityManager = $entityManager;
         $this->actualiteRepository = $this->entityManager->getRepository('AppBundle:Actualite');
+        $this->actualiteTypeRepository = $this->entityManager->getRepository('AppBundle:ActualiteType');
     }
 
     /**
@@ -32,6 +35,10 @@ class ActualiteService extends AService{
      */
     public function getActualiteById($id){
         return $this->actualiteRepository->findOneBy(array('id' => $id));
+    }
+
+    public function getActualiteTypeById($id){
+        return $this->actualiteTypeRepository->findOneBy(array('id' => $id));
     }
 
     /**

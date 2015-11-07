@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Actualite;
+use AppBundle\Entity\ActualiteType;
 use AppBundle\Form\Type\Actualite\SearchFormType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -94,4 +95,31 @@ class ActualiteController extends AController
         return new JsonResponse(array('succes' => "0", 'error' => '1'));
     }
 
+    public function modifierActualiteAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        if ($request->isMethod ( 'POST' )) {
+            $actualiteService = $this->get('actualite_service');
+
+            $actualite = $actualiteService->getActualiteById($request->request->get ( 'actualite_id' ));
+
+            if (!is_null($actualite) && $actualite instanceof Actualite){
+                $actualite->setTitre($request->request->get('titre'));
+                $actualite->setCommentaire($request->request->get('commentaire'));
+                $actualite->setDateDebutAffichage(new \DateTime($request->request->get('start_date')));
+                $actualite->setDateFinAffichage(new \DateTime($request->request->get('end_date')));
+                $afficherAccueil = $request->request->get('afficher_accueil') === 'true' ? true: false;
+                $actualite->setAfficherAccueil($afficherAccueil);
+                $actualiteType = $actualiteService->getActualiteTypeById($request->request->get('type_actualite'));
+                if (!is_null($actualiteType) && $actualiteType instanceof ActualiteType) {
+                    $actualite->setType($actualiteType);
+                }
+                $em->persist($actualite);
+                $em->flush();
+
+                $this->addFlash('success', 'L\'actualité a correctement été modifiée.');
+                return new JsonResponse(array('succes' => "1", 'error' => '0'));
+            }
+        }
+        return new JsonResponse(array('succes' => "0", 'error' => '1'));
+    }
 }
