@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Actualite;
 use AppBundle\Entity\ActualiteType;
+use AppBundle\Form\Type\Actualite\AddFormType;
 use AppBundle\Form\Type\Actualite\SearchFormType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -121,5 +122,44 @@ class ActualiteController extends AController
             }
         }
         return new JsonResponse(array('succes' => "0", 'error' => '1'));
+    }
+
+    public function ajouterAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $actualiteService = $this->get('actualite_service');
+        // Création du formulaire
+        $form = $this->createForm (new AddFormType($actualiteService));
+
+        // Post du formulaire
+        if ($request->isMethod('POST')) {
+            $form->submit($request->request->get($form->getName()));
+
+            if ($form->isValid()) {
+                $data = $form->getData();
+                $typeActualite = $actualiteService->getActualiteTypeById($data['typeActualite']);
+
+                $actualite = new Actualite();
+                $actualite->setTitre($data['titre']);
+                $actualite->setCommentaire($data['commentaire']);
+                $actualite->setDateDebutAffichage(new \DateTime($data['startDate']));
+                $actualite->setDateFinAffichage(new \DateTime($data['endDate']));
+                if (!is_null($typeActualite) && $typeActualite instanceof ActualiteType) {
+                    $actualite->setType($typeActualite);
+                }
+                $actualite->setAfficherAccueil($data['afficherAccueil']);
+                $actualite->setSiteWeb($data['siteWeb']);
+                $em->persist($actualite);
+                $em->flush();
+
+                $this->addFlash('success', 'L\'actualité a correctement été enregistrée.');
+            }
+        }
+
+        // replace this example code with whatever you need
+        return $this->render('actualite/ajouter.html.twig', array(
+                'form' => $form->createView())
+        );
     }
 }

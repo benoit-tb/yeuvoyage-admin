@@ -12,11 +12,30 @@
         <li>
             <a href="#" class="dropmenu"><i class="fa fa-bus"></i><span class="hidden-sm"> Correspondances SNCF</span> <span class="label"><i class="fa fa-chevron-down"></i></span></a>
             <ul>
-                <li><a href="{{ path('yeu_voyage_correspondance_sncf_afficher') }}" class="submenu"><i class="fa fa fa-bus"></i><span class="hidden-sm"> Consultation</span></a></li>
+                <li><a href="{{ path('yeu_voyage_correspondance_sncf_afficher') }}" class="submenu"><i class="fa fa-bus"></i><span class="hidden-sm"> Consultation</span></a></li>
                 <li><a href="{{ path('yeu_voyage_correspondance_sncf_importer') }}" class="submenu"><i class="fa fa-upload"></i><span class="hidden-sm"> Import</span></a></li>
             </ul>
         </li>
-        <li><a href="{{ path('yeu_voyage_actualite_afficher') }}"><i class="fa fa-info-circle"></i><span class="hidden-sm"> Actualités</span></a></li>
-        <li><a href="#"><i class="fa fa-info-circle"></i><span class="hidden-sm"> Informations</span></a></li>
+        <li>
+            <a href="#" class="dropmenu"><i class="fa fa-info-circle"></i><span class="hidden-sm"> Actualités</span> <span class="label"><i class="fa fa-chevron-down"></i></span></a>
+            <ul>
+                <li><a href="{{ path('yeu_voyage_actualite_afficher') }}" class="submenu"><i class="fa fa-info-circle"></i><span class="hidden-sm"> Liste</span></a></li>
+                <li><a href="{{ path('yeu_voyage_actualite_ajouter') }}" class="submenu"><i class="fa fa-info-circle"></i><span class="hidden-sm"> Ajouter</span></a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="dropmenu"><i class="fa fa-info-circle"></i><span class="hidden-sm"> Compagnies</span> <span class="label"><i class="fa fa-chevron-down"></i></span></a>
+            <ul>
+                <li><a href="{{ path('yeu_voyage_compagnie_afficher') }}" class="submenu"><i class="fa fa-info-circle"></i><span class="hidden-sm"> Yeu continent</span></a></li>
+                <li><a href="{{ path('yeu_voyage_compagnie_afficher') }}" class="submenu"><i class="fa fa-info-circle"></i><span class="hidden-sm"> Compagnie Vendéenne</span></a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="dropmenu"><i class="fa fa-car"></i><span class="hidden-sm"> Parking</span> <span class="label"><i class="fa fa-chevron-down"></i></span></a>
+            <ul>
+                <li><a href="{{ path('yeu_voyage_parking_afficher') }}" class="submenu"><i class="fa fa-car"></i><span class="hidden-sm"> Liste</span></a></li>
+                <li><a href="{{ path('yeu_voyage_parking_ajouter') }}" class="submenu"><i class="fa fa-car"></i><span class="hidden-sm"> Ajouter</span></a></li>
+            </ul>
+        </li>
     </ul>
 </div>

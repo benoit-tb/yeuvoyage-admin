@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * YvParkingType
+ * ParkingType
  */
-class YvParkingType
+class ParkingType
 {
     /**
      * @var integer
@@ -38,7 +38,7 @@ class YvParkingType
      *
      * @param string $nom
      *
-     * @return YvParkingType
+     * @return ParkingType
      */
     public function setNom($nom)
     {
@@ -62,7 +62,7 @@ class YvParkingType
      *
      * @param string $description
      *
-     * @return YvParkingType
+     * @return ParkingType
      */
     public function setDescription($description)
     {

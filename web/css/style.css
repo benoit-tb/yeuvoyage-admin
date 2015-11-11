@@ -4415,3 +4415,8 @@ table.dataTable{
 .form-group .select2-container .select2-search-choice{
     font-size: 10px;
 }
+
+#map {
+    width: 500px;
+    height: 400px;
+}

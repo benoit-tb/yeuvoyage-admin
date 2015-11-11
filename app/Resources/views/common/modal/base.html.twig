@@ -12,8 +12,8 @@
                 {% block modalBody %}{% endblock %}
 			</div>
             <div class="modal-footer">
-                <button data-dismiss="modal" class="btn btn-default" type="button">Annuler</button>
-                <button id="" class="btn btn-primary btn-save-popup" type="button">Modifier</button>
+                {% if btnClose is not defined or (btnClose is defined and btnSubmit != 'false') %}<button data-dismiss="modal" class="btn btn-default" type="button">Annuler</button>{% endif %}
+                {% if btnSubmit is not defined or (btnSubmit is defined and btnSubmit != 'false') %}<button id="" class="btn btn-primary btn-save-popup" type="button">Modifier</button>{% endif %}
             </div>
 		</div>
 	</div>

@@ -3,19 +3,14 @@
 namespace AppBundle\Entity;
 
 /**
- * YvParking
+ * Parking
  */
-class YvParking
+class Parking
 {
     /**
      * @var integer
      */
     private $id;
-
-    /**
-     * @var integer
-     */
-    private $idVille;
 
     /**
      * @var string
@@ -78,9 +73,14 @@ class YvParking
     private $prestations;
 
     /**
-     * @var \AppBundle\Entity\YvParkingType
+     * @var \AppBundle\Entity\Ville
      */
-    private $idTypeParking;
+    private $ville;
+
+    /**
+     * @var \AppBundle\Entity\ParkingType
+     */
+    private $typeParking;
 
     /**
      * @var \AppBundle\Entity\YvGare
@@ -99,35 +99,11 @@ class YvParking
     }
 
     /**
-     * Set idVille
-     *
-     * @param integer $idVille
-     *
-     * @return YvParking
-     */
-    public function setIdVille($idVille)
-    {
-        $this->idVille = $idVille;
-
-        return $this;
-    }
-
-    /**
-     * Get idVille
-     *
-     * @return integer
-     */
-    public function getIdVille()
-    {
-        return $this->idVille;
-    }
-
-    /**
      * Set nom
      *
      * @param string $nom
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setNom($nom)
     {
@@ -151,7 +127,7 @@ class YvParking
      *
      * @param string $latitude
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setLatitude($latitude)
     {
@@ -175,7 +151,7 @@ class YvParking
      *
      * @param string $longitude
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setLongitude($longitude)
     {
@@ -199,7 +175,7 @@ class YvParking
      *
      * @param integer $zoommap
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setZoommap($zoommap)
     {
@@ -223,7 +199,7 @@ class YvParking
      *
      * @param string $distanceGare
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setDistanceGare($distanceGare)
     {
@@ -247,7 +223,7 @@ class YvParking
      *
      * @param string $adresse
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setAdresse($adresse)
     {
@@ -271,7 +247,7 @@ class YvParking
      *
      * @param string $telephone
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setTelephone($telephone)
     {
@@ -295,7 +271,7 @@ class YvParking
      *
      * @param string $fax
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setFax($fax)
     {
@@ -319,7 +295,7 @@ class YvParking
      *
      * @param string $mail
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setMail($mail)
     {
@@ -343,7 +319,7 @@ class YvParking
      *
      * @param string $siteWeb
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setSiteWeb($siteWeb)
     {
@@ -367,7 +343,7 @@ class YvParking
      *
      * @param string $dateOuverture
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setDateOuverture($dateOuverture)
     {
@@ -391,7 +367,7 @@ class YvParking
      *
      * @param string $prestations
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setPrestations($prestations)
     {
@@ -411,27 +387,51 @@ class YvParking
     }
 
     /**
-     * Set idTypeParking
+     * Set typeParking
      *
-     * @param \AppBundle\Entity\YvParkingType $idTypeParking
+     * @param \AppBundle\Entity\ParkingType $typeParking
      *
-     * @return YvParking
+     * @return Parking
      */
-    public function setIdTypeParking(\AppBundle\Entity\YvParkingType $idTypeParking = null)
+    public function setTypeParking(\AppBundle\Entity\ParkingType $typeParking = null)
     {
-        $this->idTypeParking = $idTypeParking;
+        $this->typeParking = $typeParking;
 
         return $this;
     }
 
     /**
-     * Get idTypeParking
+     * Get typeParking
      *
-     * @return \AppBundle\Entity\YvParkingType
+     * @return \AppBundle\Entity\ParkingType
      */
-    public function getIdTypeParking()
+    public function getTypeParking()
     {
-        return $this->idTypeParking;
+        return $this->typeParking;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param \AppBundle\Entity\Ville $ville
+     *
+     * @return Parking
+     */
+    public function setVille(\AppBundle\Entity\Ville $ville = null)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return \AppBundle\Entity\Ville
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 
     /**
@@ -439,7 +439,7 @@ class YvParking
      *
      * @param \AppBundle\Entity\YvGare $idGare
      *
-     * @return YvParking
+     * @return Parking
      */
     public function setIdGare(\AppBundle\Entity\YvGare $idGare = null)
     {

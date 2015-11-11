@@ -11,11 +11,11 @@ use Doctrine\ORM\EntityRepository;
  * @author bturbe
  *
  */
-class ActualiteService extends AService{
+class ParkingService extends AService{
 
-    private $actualiteRepository;
+    private $parkingRepository;
 
-    private $actualiteTypeRepository;
+    private $parkingTypeRepository;
 
     /**
      * Constructeur
@@ -23,8 +23,8 @@ class ActualiteService extends AService{
      */
     public function __construct(ObjectManager $entityManager){
         $this->entityManager = $entityManager;
-        $this->actualiteRepository = $this->entityManager->getRepository('AppBundle:Actualite');
-        $this->actualiteTypeRepository = $this->entityManager->getRepository('AppBundle:ActualiteType');
+        $this->parkingRepository = $this->entityManager->getRepository('AppBundle:Parking');
+        $this->parkingTypeRepository = $this->entityManager->getRepository('AppBundle:ParkingType');
     }
 
     /**
@@ -34,18 +34,18 @@ class ActualiteService extends AService{
      * @return object
      */
     public function getActualiteById($id){
-        return $this->actualiteRepository->findOneBy(array('id' => $id));
+        return $this->parkingRepository->findOneBy(array('id' => $id));
     }
 
     public function getActualiteTypeById($id){
-        return $this->actualiteTypeRepository->findOneBy(array('id' => $id));
+        return $this->parkingTypeRepository->findOneBy(array('id' => $id));
     }
 
     /**
      * @return array
      */
-    public function getActualiteTypes(){
-        return $this->actualiteTypeRepository->findAll();
+    public function getParkingTypes(){
+        return $this->parkingTypeRepository->findAll();
     }
 
     /**
@@ -53,7 +53,7 @@ class ActualiteService extends AService{
      * @param $data
      * @return mixed
      */
-    public function getActualites($data){
+    public function getParkings($data){
 
         $qb = $this->entityManager->createQueryBuilder();
 

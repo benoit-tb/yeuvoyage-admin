@@ -1,4 +1,4 @@
-AppBundle\Entity\YvParking:
+AppBundle\Entity\Parking:
     type: entity
     table: yv_parking
     indexes:
@@ -21,12 +21,6 @@ AppBundle\Entity\YvParking:
             generator:
                 strategy: IDENTITY
     fields:
-        idVille:
-            type: integer
-            nullable: false
-            options:
-                unsigned: false
-            column: id_ville
         nom:
             type: string
             nullable: false
@@ -101,14 +95,24 @@ AppBundle\Entity\YvParking:
             options:
                 fixed: false
     manyToOne:
-        idTypeParking:
-            targetEntity: YvParkingType
+        typeParking:
+            targetEntity: ParkingType
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
                 id_type_parking:
+                    referencedColumnName: id
+            orphanRemoval: false
+        ville:
+            targetEntity: Ville
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_ville:
                     referencedColumnName: id
             orphanRemoval: false
         idGare:

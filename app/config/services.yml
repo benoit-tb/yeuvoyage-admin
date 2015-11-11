@@ -27,3 +27,7 @@ services:
     actualite_service:
         class: AppBundle\Service\ActualiteService
         arguments: [@doctrine.orm.entity_manager]
+
+    parking_service:
+        class: AppBundle\Service\ParkingService
+        arguments: [@doctrine.orm.entity_manager]

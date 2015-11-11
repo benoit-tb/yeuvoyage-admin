@@ -100,6 +100,10 @@ yeu_voyage_actualite_afficher:
     path:      /actualite/afficher/
     defaults:  { _controller: AppBundle:Actualite:afficher }
 
+yeu_voyage_actualite_ajouter:
+    path:      /actualite/ajouter/
+    defaults:  { _controller: AppBundle:Actualite:ajouter }
+
 yeu_voyage_actualite_supprimer:
     path:      /actualite/annuler/
     defaults:  { _controller: AppBundle:Actualite:supprimerActualite }
@@ -117,3 +121,21 @@ yeu_voyage_actualite_modifier:
     defaults:  { _controller: AppBundle:Actualite:modifierActualite }
     options:
         expose: true
+
+#
+# Routing partie gestion des compagnies
+#
+yeu_voyage_compagnie_afficher:
+    path:      /compagnie/
+    defaults:  { _controller: AppBundle:Compagnie:afficher }
+
+#
+# Routing partie gestion des parkings
+#
+yeu_voyage_parking_afficher:
+    path:      /parking/afficher/
+    defaults:  { _controller: AppBundle:Parking:afficher }
+
+yeu_voyage_parking_ajouter:
+    path:      /parking/ajouter/
+    defaults:  { _controller: AppBundle:Parking:ajouter }

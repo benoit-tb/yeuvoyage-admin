@@ -1,4 +1,4 @@
-AppBundle\Entity\YvParkingType:
+AppBundle\Entity\ParkingType:
     type: entity
     table: yv_parking_type
     id:
