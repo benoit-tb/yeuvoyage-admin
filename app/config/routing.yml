@@ -105,7 +105,7 @@ yeu_voyage_actualite_ajouter:
     defaults:  { _controller: AppBundle:Actualite:ajouter }
 
 yeu_voyage_actualite_supprimer:
-    path:      /actualite/annuler/
+    path:      /actualite/supprimer/
     defaults:  { _controller: AppBundle:Actualite:supprimerActualite }
     options:
         expose: true
@@ -139,3 +139,9 @@ yeu_voyage_parking_afficher:
 yeu_voyage_parking_ajouter:
     path:      /parking/ajouter/
     defaults:  { _controller: AppBundle:Parking:ajouter }
+
+yeu_voyage_parking_supprimer:
+    path:      /parking/supprimer/
+    defaults:  { _controller: AppBundle:Parking:supprimerParking }
+    options:
+        expose: true

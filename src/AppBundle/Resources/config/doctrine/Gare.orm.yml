@@ -1,4 +1,4 @@
-AppBundle\Entity\YvGare:
+AppBundle\Entity\Gare:
     type: entity
     table: yv_gare
     indexes:

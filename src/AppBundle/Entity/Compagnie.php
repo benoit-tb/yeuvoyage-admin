@@ -183,11 +183,11 @@ class Compagnie
     /**
      * Add idGare
      *
-     * @param \AppBundle\Entity\YvGare $idGare
+     * @param \AppBundle\Entity\Gare $idGare
      *
      * @return Compagnie
      */
-    public function addIdGare(\AppBundle\Entity\YvGare $idGare)
+    public function addIdGare(\AppBundle\Entity\Gare $idGare)
     {
         $this->idGare[] = $idGare;
 
@@ -197,9 +197,9 @@ class Compagnie
     /**
      * Remove idGare
      *
-     * @param \AppBundle\Entity\YvGare $idGare
+     * @param \AppBundle\Entity\Gare $idGare
      */
-    public function removeIdGare(\AppBundle\Entity\YvGare $idGare)
+    public function removeIdGare(\AppBundle\Entity\Gare $idGare)
     {
         $this->idGare->removeElement($idGare);
     }

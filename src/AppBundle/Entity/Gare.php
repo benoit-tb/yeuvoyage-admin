@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * YvGare
+ * Gare
  */
-class YvGare
+class Gare
 {
     /**
      * @var integer
@@ -75,7 +75,7 @@ class YvGare
      *
      * @param string $adresse
      *
-     * @return YvGare
+     * @return Gare
      */
     public function setAdresse($adresse)
     {
@@ -99,7 +99,7 @@ class YvGare
      *
      * @param boolean $autreWifi
      *
-     * @return YvGare
+     * @return Gare
      */
     public function setAutreWifi($autreWifi)
     {
@@ -123,7 +123,7 @@ class YvGare
      *
      * @param boolean $autreSncf
      *
-     * @return YvGare
+     * @return Gare
      */
     public function setAutreSncf($autreSncf)
     {
@@ -147,7 +147,7 @@ class YvGare
      *
      * @param boolean $mapZoom
      *
-     * @return YvGare
+     * @return Gare
      */
     public function setMapZoom($mapZoom)
     {
@@ -171,7 +171,7 @@ class YvGare
      *
      * @param string $mapLatitude
      *
-     * @return YvGare
+     * @return Gare
      */
     public function setMapLatitude($mapLatitude)
     {
@@ -195,7 +195,7 @@ class YvGare
      *
      * @param string $mapLongitude
      *
-     * @return YvGare
+     * @return Gare
      */
     public function setMapLongitude($mapLongitude)
     {
@@ -219,7 +219,7 @@ class YvGare
      *
      * @param \AppBundle\Entity\Ville $idVille
      *
-     * @return YvGare
+     * @return Gare
      */
     public function setIdVille(\AppBundle\Entity\Ville $idVille = null)
     {
@@ -243,7 +243,7 @@ class YvGare
      *
      * @param \AppBundle\Entity\Compagnie $idCompagnie
      *
-     * @return YvGare
+     * @return Gare
      */
     public function addIdCompagnie(\AppBundle\Entity\Compagnie $idCompagnie)
     {

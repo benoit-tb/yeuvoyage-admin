@@ -43,7 +43,7 @@ AppBundle\Entity\Compagnie:
                 fixed: false
     manyToMany:
         idGare:
-            targetEntity: YvGare
+            targetEntity: Gare
             cascade: {  }
             fetch: LAZY
             mappedBy: idCompagnie

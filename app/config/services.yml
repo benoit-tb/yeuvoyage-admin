@@ -31,3 +31,7 @@ services:
     parking_service:
         class: AppBundle\Service\ParkingService
         arguments: [@doctrine.orm.entity_manager]
+
+    gare_service:
+        class: AppBundle\Service\GareService
+        arguments: [@doctrine.orm.entity_manager]

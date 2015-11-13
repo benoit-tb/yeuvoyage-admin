@@ -83,9 +83,9 @@ class Parking
     private $typeParking;
 
     /**
-     * @var \AppBundle\Entity\YvGare
+     * @var \AppBundle\Entity\Gare
      */
-    private $idGare;
+    private $gare;
 
 
     /**
@@ -435,27 +435,27 @@ class Parking
     }
 
     /**
-     * Set idGare
+     * Set gare
      *
-     * @param \AppBundle\Entity\YvGare $idGare
+     * @param \AppBundle\Entity\Gare $gare
      *
      * @return Parking
      */
-    public function setIdGare(\AppBundle\Entity\YvGare $idGare = null)
+    public function setGare(\AppBundle\Entity\Gare $gare = null)
     {
-        $this->idGare = $idGare;
+        $this->gare = $gare;
 
         return $this;
     }
 
     /**
-     * Get idGare
+     * Get gare
      *
-     * @return \AppBundle\Entity\YvGare
+     * @return \AppBundle\Entity\Gare
      */
-    public function getIdGare()
+    public function getGare()
     {
-        return $this->idGare;
+        return $this->gare;
     }
 }
 

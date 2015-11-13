@@ -4,21 +4,22 @@ namespace AppBundle\Service;
 
 use AppBundle\Service\AService;
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\EntityRepository;
 
 /**
+ * Service permettant de gérer les informations sur les parkings.
  *
  * @author bturbe
  *
  */
 class ParkingService extends AService{
 
+    // Repository
     private $parkingRepository;
-
     private $parkingTypeRepository;
 
     /**
-     * Constructeur
+     * Constructeur.s
+     *
      * @param ObjectManager $entityManager
      */
     public function __construct(ObjectManager $entityManager){
@@ -28,50 +29,54 @@ class ParkingService extends AService{
     }
 
     /**
-     * Retourne l'actualite en fonction de son identifiant.
+     * Retourne un parking en fonction de son identifiant.
      *
-     * @param $id
-     * @return object
+     * @param $id integer l'identifiant du parking.
+     * @return object Parking le parking en question
      */
-    public function getActualiteById($id){
+    public function getParkingById($id){
         return $this->parkingRepository->findOneBy(array('id' => $id));
     }
 
-    public function getActualiteTypeById($id){
+    /**
+     * Retourne un type de parking en fonction de son identifiant.
+     *
+     * @param $id integer l'identifiant du type de parking
+     * @return object ParkingType le type de parking
+     */
+    public function getParkingTypeById($id){
         return $this->parkingTypeRepository->findOneBy(array('id' => $id));
     }
 
     /**
-     * @return array
+     * Retourne l'ensemble des types de parkings.
+     *
+     * @return array les types de parking
      */
     public function getParkingTypes(){
         return $this->parkingTypeRepository->findAll();
     }
 
     /**
-     * Fonction permettant de retourner la liste de trajets
-     * @param $data
-     * @return mixed
+     * Fonction permettant de retourner la liste de parkings.
+     *
+     * @param $data array le tableau des paramètres
+     * @return mixed la liste des parkings
      */
     public function getParkings($data){
 
         $qb = $this->entityManager->createQueryBuilder();
 
-        $qb->select('a')->from('AppBundle:Actualite', 'a');
+        $qb->select('p')->from('AppBundle:Parking', 'p');
 
         // Date de début
-        if (!is_null($data["dateDebut"])){
-            $qb->andWhere('a.date >= :date_debut')->setParameter('date_debut', $data["dateDebut"]);
+        if (!is_null($data["typeParking"])){
+            $qb->andWhere('p.typeParking = :type')->setParameter('type', $data["typeParking"]);
         }
 
-        // Date de fin
-        if (!is_null($data["dateFin"])){
-            $date = new \DateTime($data["dateFin"]);
-            $date->add(new \DateInterval('P1D'));
-            $qb->andWhere('a.date <= :date_fin')->setParameter('date_fin', $date->format('Y-m-d'));
+        if (!is_null($data["ville"])){
+            $qb->andWhere('p.ville = :ville')->setParameter('ville', $data["ville"]);
         }
-
-        $qb->orderBy('a.date', 'DESC');
 
         return $qb->getQuery()->getResult();
     }

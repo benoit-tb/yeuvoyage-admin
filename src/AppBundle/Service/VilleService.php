@@ -26,6 +26,16 @@ class VilleService extends AService{
     }
 
     /**
+     * Fonction permettant de retourner une ville en fonction de son identifiant.
+     *
+     * @param $id integer l'identifiant de la ville
+     * @return object la ville en question
+     */
+    public function getVilleById($id){
+        return $this->villeRepository->findOneBy(array('id' => $id));
+    }
+
+    /**
      * Fonction retournant la liste des villes.
      *
      * @return array un tableau de la liste des villes

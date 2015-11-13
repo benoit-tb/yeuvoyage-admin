@@ -3,6 +3,33 @@ $( document ).ready(function() {
     $('.btn-map-parking').click(function() {
         $('.popup-map-parking').modal('show');
     });
+
+
+    // Suppression des parkings
+    $('.btn-suppression-parking').click(function() {
+        var idParking = $(this).attr('id');
+        $(".popup-confirm-suppression #parking-id").val(idParking);
+        $('.popup-confirm-suppression').modal('show');
+    });
+
+    // Suppression du parking
+    $('.popup-confirm-suppression .btn-save-popup').click(function() {
+        var idParking = $('.popup-confirm-suppression #parking-id').val();
+        var url = Routing.generate('yeu_voyage_parking_supprimer');
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                parking_id: idParking
+            },
+            success:function(data) {
+                location.reload(true);
+            }
+        });
+
+        $('.popup-confirm-suppression').modal('hide');
+    });
 });
 
 

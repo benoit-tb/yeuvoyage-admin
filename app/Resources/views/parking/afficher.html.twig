@@ -96,6 +96,8 @@
 {% block modals %}
     {% include "::common/loading.html.twig" %}
     {% include "::parking/modal/map.html.twig"  with {'modalClass': 'popup-map-parking', 'modalTitle': 'Aperçu du parking', 'btnSubmit': 'false' } %}
+    {% include "::parking/modal/confirmeSuppression.html.twig"  with {'modalClass': 'popup-confirm-suppression', 'modalTitle': 'Suppression parking'} %}
+    {#{% include "::parking/modal/modifierActualite.html.twig"  with {'modalClass': 'popup-modification-parking', 'modalTitle': 'Modification parking'} %}#}
 {% endblock %}
 
 {% block javascripts %}

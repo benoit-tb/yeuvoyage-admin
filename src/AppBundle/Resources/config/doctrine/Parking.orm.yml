@@ -29,68 +29,68 @@ AppBundle\Entity\Parking:
                 fixed: false
         latitude:
             type: decimal
-            nullable: false
+            nullable: true
             precision: 8
             scale: 6
         longitude:
             type: decimal
-            nullable: false
+            nullable: true
             precision: 8
             scale: 6
         zoommap:
             type: integer
-            nullable: false
+            nullable: true
             options:
                 unsigned: false
             column: zoomMap
         distanceGare:
             type: string
-            nullable: false
+            nullable: true
             length: 20
             options:
                 fixed: false
             column: distance_gare
         adresse:
             type: text
-            nullable: false
+            nullable: true
             length: 65535
             options:
                 fixed: false
         telephone:
             type: string
-            nullable: false
+            nullable: true
             length: 50
             options:
                 fixed: false
         fax:
             type: string
-            nullable: false
+            nullable: true
             length: 50
             options:
                 fixed: false
         mail:
             type: string
-            nullable: false
+            nullable: true
             length: 100
             options:
                 fixed: false
         siteWeb:
             type: string
-            nullable: false
+            nullable: true
             length: 100
             options:
                 fixed: false
             column: site_web
         dateOuverture:
             type: text
-            nullable: false
+            nullable: true
             length: 65535
             options:
                 fixed: false
             column: date_ouverture
         prestations:
             type: text
-            nullable: false
+            nullable: true
             length: 65535
             options:
                 fixed: false
@@ -115,8 +115,8 @@ AppBundle\Entity\Parking:
                 id_ville:
                     referencedColumnName: id
             orphanRemoval: false
-        idGare:
-            targetEntity: YvGare
+        gare:
+            targetEntity: Gare
             cascade: {  }
             fetch: LAZY
             mappedBy: null

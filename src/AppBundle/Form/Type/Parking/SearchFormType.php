@@ -55,7 +55,7 @@ class SearchFormType extends AbstractType {
                 'class' => 'form-control form-large '
             ),
             'label'  => 'Type de parking',
-            'required' => true
+            'required' => false
         ));
 
         // Villes
@@ -65,7 +65,7 @@ class SearchFormType extends AbstractType {
                 'class' => 'form-control'
             ),
             'label'  => 'Ville',
-            'required' => true
+            'required' => false
         ));
 
         // Bouton sauvegarde
