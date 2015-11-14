@@ -120,8 +120,8 @@ class AddFormType extends AbstractType {
         ));
 
         $builder->add ( 'btn_map', 'button', array (
-            'label' => "<i class=\"fa fa-map-marker\"></i>",
-            'attr' => array ('class' => 'btn btn-success')
+            'label' => " Renseigner la position",
+            'attr' => array ('class' => 'btn btn-success fa fa-map-marker')
         ));
 
         $builder->add ( 'telephone', 'text', array (

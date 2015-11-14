@@ -138,4 +138,24 @@ class ParkingController extends AController
         }
         return new JsonResponse(array('succes' => "0", 'error' => '1'));
     }
+
+
+
+    public function getParkingDetailAction(Request $request){
+        if ($request->isMethod ( 'POST' )) {
+            $parkingService = $this->get('parking_service');
+
+            $parking = $parkingService->getParkingById($request->request->get('parking_id'));
+
+            if (!is_null($parking) && $parking instanceof Parking){
+                $result['latitude_map'] = $parking->getLatitude();
+                $result['longitude_map'] = $parking->getLongitude();
+                $result['zoom_map'] = $parking->getZoommap();
+                $result['nom_parking'] = $parking->getNom();
+
+                return new JsonResponse($result);
+            }
+        }
+        return new JsonResponse(array('succes' => "0", 'error' => '1'));
+    }
 }

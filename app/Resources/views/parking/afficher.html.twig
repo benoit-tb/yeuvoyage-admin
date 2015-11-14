@@ -64,7 +64,8 @@
                             <th>Type</th>
                             <th>Téléphone/Fax</th>
                             <th>Mail</th>
-                            <th>Site web</th>
+                            <th>Site</th>
+                            <th>Map</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -78,8 +79,10 @@
                                 <td>{% if result.telephone != '' %}{{ 'Tél. : ' ~ result.telephone }}{% endif %}{% if result.fax != '' %}<br />{{ 'Fax. : ' ~ result.fax }}{% endif %}</td>
                                 <td><a href="mailto:{{ result.mail }}">{{ result.mail }}</a></td>
                                 <td align="center">{% if result.siteWeb != '' %}<a href="http://{{ result.siteWeb }}" target="_blank"  data-toggle="tooltip" data-placement="top" title="{{ result.siteWeb }}" ><i class="glyphicon glyphicon-globe"></i></a>{% endif %}</td>
-                                <td nowrap>
+                                <td align="center">
                                     <button type="button" class="btn btn-success btn-map-parking" id="{{ result.id }}" data-toggle="tooltip" data-placement="top" title="Position du parking"><i class="fa fa-map-marker"></i></button>
+                                </td>
+                                <td nowrap>
                                     <button type="button" class="btn btn-info btn-modification-parking" id="{{ result.id }}" data-toggle="tooltip" data-placement="top" title="Modifier le parking"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-danger btn-suppression-parking" id="{{ result.id }}" data-toggle="tooltip" data-placement="top" title="Supprimer leparking"><i class="fa fa-remove"></i></button>
                                 </td>
@@ -91,6 +94,7 @@
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block modals %}

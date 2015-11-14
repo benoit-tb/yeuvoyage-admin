@@ -145,3 +145,9 @@ yeu_voyage_parking_supprimer:
     defaults:  { _controller: AppBundle:Parking:supprimerParking }
     options:
         expose: true
+
+yeu_voyage_parking_detail:
+    path:      /parking/detail/
+    defaults:  { _controller: AppBundle:Parking:getParkingDetail }
+    options:
+        expose: true
