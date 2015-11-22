@@ -141,6 +141,17 @@ yeu_voyage_compagnie_fichier_supprimer:
     options:
         expose: true
 
+yeu_voyage_compagnie_fichier_detail:
+    path:      /compagnie/fichier/detail/
+    defaults:  { _controller: AppBundle:Compagnie:detailFichier }
+    options:
+        expose: true
+
+yeu_voyage_compagnie_fichier_modifier:
+    path:      /compagnie/fichier/modifier/
+    defaults:  { _controller: AppBundle:Compagnie:modifierFichier }
+    options:
+        expose: true
 #
 # Routing partie gestion des parkings
 #

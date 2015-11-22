@@ -1,0 +1,15 @@
+{% extends 'common/modal/base.html.twig' %}
+{% block modalBody %}
+    <div class="form-group">
+        <label for="update-fichier-nom">Nom</label>
+        <input type="text" class="form-control" id="update-fichier-nom" value="">
+    </div>
+    <div class="form-group">
+        <label for="update-fichier-description">Description</label>
+        <input type="text" class="form-control" id="update-fichier-description" value="">
+    </div>
+    <div class="form-group">
+        <a href="#"  target="_blank" id="update-fichier-url"><i class="fa fa-file"></i> Voir l'aperçu du fichier</a>
+    </div>
+    <input type="hidden" id="ressource-id" name="resource-id" value="0" />
+{% endblock %}

@@ -143,7 +143,7 @@
                             <th>Nom</th>
                             <th>Description</th>
                             <th>Type</th>
-                            <th>Télécharger</th>
+                            <th align="center">Télécharger</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -154,9 +154,9 @@
                             <td>{{ fichierCompagnie.titre }}</td>
                             <td>{{ fichierCompagnie.description }}</td>
                             <td>{{ fichierCompagnie.type }}</td>
-                            <td align="center"><a href="{{ fichierCompagnie.url }}" target="_blank"> <i class="fa fa-upload"></i></a></td>
+                            <td align="center"><a href="http://{{ fichierCompagnie.url }}" target="_blank"> <i class="fa fa-upload"></i></a></td>
                             <td>
-                                <button title="" data-placement="top" data-toggle="tooltip" id="{{ fichierCompagnie.id }}" class="btn btn-info" type="button" data-original-title="Modifier le fichier"><i class="fa fa-edit"></i></button>
+                                <button title="" data-placement="top" data-toggle="tooltip" id="{{ fichierCompagnie.id }}" class="btn btn-info btn-modification-fichier" type="button" data-original-title="Modifier le fichier"><i class="fa fa-edit"></i></button>
                                 <button title="" data-placement="top" data-toggle="tooltip" id="{{ fichierCompagnie.id }}" class="btn btn-danger btn-confirm-suppression-fichier" type="button" data-original-title="Supprimer le fichier"><i class="fa fa-remove"></i></button>
                             </td>
                         </tr>
@@ -172,6 +172,7 @@
 
 {% block modals %}
     {% include "::compagnie/modal/modifierContactInfos.html.twig"  with {'modalClass': 'popup-modification-contact-infos', 'modalTitle': 'Modification des informations de contact'} %}
+    {% include "::compagnie/modal/modifierFichierCompagnie.html.twig"  with {'modalClass': 'popup-modification-fichier', 'modalTitle': 'Modification du fichier'} %}
     {% include "::compagnie/modal/confirmeSuppression.html.twig"  with {'modalClass': 'popup-confirm-suppression-fichier', 'modalTitle': 'Suppression fichier'} %}
 {% endblock %}
 
