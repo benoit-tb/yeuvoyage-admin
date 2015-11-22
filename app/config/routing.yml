@@ -126,8 +126,20 @@ yeu_voyage_actualite_modifier:
 # Routing partie gestion des compagnies
 #
 yeu_voyage_compagnie_afficher:
-    path:      /compagnie/
+    path:      /compagnie/{compagnieId}
     defaults:  { _controller: AppBundle:Compagnie:afficher }
+
+yeu_voyage_compagnie_modifier:
+    path:      /compagnie/modifier/
+    defaults:  { _controller: AppBundle:Compagnie:modifierCompagnie }
+    options:
+        expose: true
+
+yeu_voyage_compagnie_fichier_supprimer:
+    path:      /compagnie/fichier/supprimer/
+    defaults:  { _controller: AppBundle:Compagnie:supprimerFichier }
+    options:
+        expose: true
 
 #
 # Routing partie gestion des parkings

@@ -2,6 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Compagnie;
+use AppBundle\Entity\Ressource;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Controller\AController;
 
@@ -13,8 +16,71 @@ class CompagnieController extends AController
         return $this->render('compagnie/afficher.html.twig');
     }
 
-    public function afficherAction(Request $request)
+    public function afficherAction(Request $request, $compagnieId)
     {
-        return $this->render('compagnie/afficher.html.twig');
+        $compagnieService = $this->get('compagnie_service');
+
+
+        $compagnie = $compagnieService->getCompagnieById($compagnieId);
+
+        $bateauxCompagnie = $compagnieService->getBateauxCompagnie($compagnieId);
+        $bureauxCompagnie = $compagnieService->getBureauxCompagnie($compagnieId);
+        $fichiersCompagnie = $compagnieService->getFichiersCompagnie($compagnieId);
+
+        return $this->render('compagnie/afficher.html.twig', array(
+            'compagnie' => $compagnie,
+            'bateauxCompagnie' => $bateauxCompagnie,
+            'bureauxCompagnie' => $bureauxCompagnie,
+            'fichiersCompagnie' => $fichiersCompagnie));
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function modifierCompagnieAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        if ($request->isMethod ( 'POST' )) {
+            $compagnieService = $this->get('compagnie_service');
+
+            $compagnie = $compagnieService->getCompagnieById($request->request->get('compagnie_id'));
+
+            if (!is_null($compagnie) && $compagnie instanceof Compagnie){
+                $compagnie->setDescription($request->request->get('description'));
+                $compagnie->setTelephone($request->request->get('telephone'));
+                $compagnie->setMail($request->request->get('mail'));
+                $compagnie->setSite($request->request->get('site_web'));
+
+                $em->persist($compagnie);
+                $em->flush();
+
+                $this->addFlash('success', 'Les informations sur la compagnie ont été modifiées.');
+                return new JsonResponse(array('succes' => "1", 'error' => '0'));
+            }
+        }
+        return new JsonResponse(array('succes' => "0", 'error' => '1'));
+    }
+
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function supprimerFichierAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        if ($request->isMethod ( 'POST' )) {
+            $compagnieService = $this->get('compagnie_service');
+
+            $fichier = $compagnieService->getFichierCompagnieById($request->request->get('fichier_id'));
+
+            if (!is_null($fichier) && $fichier instanceof Ressource){
+                $em->remove($fichier);
+                $em->flush();
+
+                $this->addFlash('success', 'Le fichier a correctement été supprimé.');
+                return new JsonResponse(array('succes' => "1", 'error' => '0'));
+            }
+        }
+        return new JsonResponse(array('succes' => "0", 'error' => '1'));
     }
 }

@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * YvRessource
+ * Ressource
  */
-class YvRessource
+class Ressource
 {
     /**
      * @var integer
@@ -35,7 +35,7 @@ class YvRessource
     /**
      * @var \AppBundle\Entity\Compagnie
      */
-    private $idCompagnie;
+    private $compagnie;
 
 
     /**
@@ -145,27 +145,27 @@ class YvRessource
     }
 
     /**
-     * Set idCompagnie
+     * Set compagnie
      *
-     * @param \AppBundle\Entity\Compagnie $idCompagnie
+     * @param \AppBundle\Entity\Compagnie $compagnie
      *
-     * @return YvRessource
+     * @return Ressource
      */
-    public function setIdCompagnie(\AppBundle\Entity\Compagnie $idCompagnie = null)
+    public function setCompagnie(\AppBundle\Entity\Compagnie $compagnie = null)
     {
-        $this->idCompagnie = $idCompagnie;
+        $this->compagnie = $compagnie;
 
         return $this;
     }
 
     /**
-     * Get idCompagnie
+     * Get compagnie
      *
      * @return \AppBundle\Entity\Compagnie
      */
-    public function getIdCompagnie()
+    public function getCompagnie()
     {
-        return $this->idCompagnie;
+        return $this->compagnie;
     }
 }
 

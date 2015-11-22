@@ -101,10 +101,26 @@ h6 {
     font-size: 16px;
     overflow: hidden;
 }
+
+.box .box-header-white {
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px 2px 0 0;
+    color: #000000;
+    font-size: 16px;
+    overflow: hidden;
+    border-bottom: 1px solid #e4e6eb;
+}
+
 .box .box-header h2 {
     float: left;
     margin: 0 0 0 20px;
     padding: 10px 0;
+}
+.box-header-white h2 {
+    float: left;
+    margin: 0 0 0 10px;
+    padding: 10px 0;
+    font-weight: bold;
 }
 .box .box-header h2 i {
     background: none repeat scroll 0 0 #005a94;
@@ -119,7 +135,10 @@ h6 {
     background: none repeat scroll 0 0 #005a94;
     float: right;
 }
-.box .box-header .box-icon i {
+.box .box-header-white .box-icon {
+    float: right;
+}
+.box .box-header .box-icon i, .box .box-header-white .box-icon i  {
     border-left: 1px solid #007cc1;
     color: white;
     display: inline-block;
@@ -130,9 +149,15 @@ h6 {
     transition: all 0.1s ease-in-out 0s;
     width: 36px;
 }
+.box .box-header-white .box-icon i{
+    color: #000000;
+    border-left: none;
+}
 .box .box-header .box-icon i:hover {
     opacity: 1;
 }
+
+
 .box .box-content {
     background: none repeat scroll 0 0 white;
     border-radius: 0 0 2px 2px;
@@ -4419,4 +4444,26 @@ table.dataTable{
 #map {
     width: 500px;
     height: 400px;
+}
+
+
+.logo-compagnie{
+    padding-top: 40px;
+}
+
+.logo-compagnie img{
+    max-width: 250px;
+}
+h1.contact {
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 32px;
+}
+
+.infos-compagnie{
+    padding-bottom: 30px;
+}
+
+.contact-box .box-content i{
+    margin-right: 10px;
 }

@@ -40,14 +40,14 @@ class Compagnie
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $idGare;
+    private $gares;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idGare = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->gares = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -181,37 +181,37 @@ class Compagnie
     }
 
     /**
-     * Add idGare
+     * Add gare
      *
-     * @param \AppBundle\Entity\Gare $idGare
+     * @param \AppBundle\Entity\Gare $gare
      *
      * @return Compagnie
      */
-    public function addIdGare(\AppBundle\Entity\Gare $idGare)
+    public function addGare(\AppBundle\Entity\Gare $gare)
     {
-        $this->idGare[] = $idGare;
+        $this->gares[] = $gare;
 
         return $this;
     }
 
     /**
-     * Remove idGare
+     * Remove gare
      *
-     * @param \AppBundle\Entity\Gare $idGare
+     * @param \AppBundle\Entity\Gare $gare
      */
-    public function removeIdGare(\AppBundle\Entity\Gare $idGare)
+    public function removeGare(\AppBundle\Entity\Gare $gare)
     {
-        $this->idGare->removeElement($idGare);
+        $this->gares->removeElement($gare);
     }
 
     /**
-     * Get idGare
+     * Get gare
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getIdGare()
+    public function getGares()
     {
-        return $this->idGare;
+        return $this->gares;
     }
 }
 

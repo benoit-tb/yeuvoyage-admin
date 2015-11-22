@@ -1,5 +1,181 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    detail
+<div class="row">
+    <div class="col-lg-12">
+        {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ flashMessage }}
+        </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ flashMessage }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row infos-compagnie">
+    <input type="hidden" name="compagnie-id" id="compagnie-id" value="{{ compagnie.id }}">
+    <div class="col-lg-8">
+        <div class="" style="float: right;margin-top: 20px;font-size: 20px;">
+            <a class="btn-update-description"><i class="fa fa-wrench"></i></a>
+        </div>
+        <h1>{{ compagnie.nom }}</h1>
+        <p>{{ compagnie.description|nl2br }}</p>
+    </div>
+    <div class="col-lg-4 logo-compagnie">
+        <img src="{{ asset('img/logo-yeu-continent.png') }}" title="Yeu Continent">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4 contact-box">
+        <div class="box">
+            <div class="box-header-white">
+                <h2>Contact</h2>
+                <div class="box-icon">
+                    <a class="btn-update-contact-infos"><i class="fa fa-wrench"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <p><i class="fa fa-phone"></i>{{ compagnie.telephone }}</p>
+                <p><i class="fa fa-envelope"></i>{{ compagnie.mail }}</p>
+                <p><i class="fa fa-globe"></i>{{ compagnie.site }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+				<div class="col-lg-6">
+					<div class="box">
+						<div class="box-header">
+							<h2><i class="fa fa-ship"></i><span class="break"></span>Bateaux</h2>
+							<div class="box-icon">
+								<a class="btn-minimize" href="table.html#"><i class="fa fa-chevron-up"></i></a>
+								<a class="btn-close" href="table.html#"><i class="fa fa-times"></i></a>
+							</div>
+						</div>
+						<div class="box-content">
+							<table class="table table-condensed">
+								  <thead>
+									  <tr>
+										  <th>#</th>
+										  <th>Nom</th>
+										  <th>Type</th>
+										  <th>Nb Places</th>
+										  <th align="center">Action</th>
+									  </tr>
+								  </thead>
+								  <tbody>
+								    {% for bateauCompagnie in bateauxCompagnie %}
+									<tr>
+										<td>{{ bateauCompagnie.id }}</td>
+										<td>{{ bateauCompagnie.nom }}</td>
+										<td>{{ bateauCompagnie.typeBateau.nom }}</td>
+										<td>{{ bateauCompagnie.nbPlace }}</td>
+										<td align="center">
+											<a href=""><i class="fa fa-pencil-square-o"></i></a>
+										</td>
+									</tr>
+                                    {% endfor %}
+								  </tbody>
+							 </table>
+
+						</div>
+					</div>
+				</div><!--/col-->
+
+				<div class="col-lg-6">
+					<div class="box">
+						<div class="box-header">
+							<h2><i class="fa fa-home"></i><span class="break"></span>Bureaux</h2>
+							<div class="box-icon">
+								<a class="btn-minimize" href="table.html#"><i class="fa fa-chevron-up"></i></a>
+								<a class="btn-close" href="table.html#"><i class="fa fa-times"></i></a>
+							</div>
+						</div>
+						<div class="box-content">
+							<table class="table table-condensed">
+								  <thead>
+									  <tr>
+										  <th>#</th>
+										  <th>Ville</th>
+										  <th>Adresse</th>
+										  <th align="center">Action</th>
+									  </tr>
+								  </thead>
+								  <tbody>
+                                  {% for bureauCompagnie in bureauxCompagnie %}
+									<tr>
+										<td>{{ bureauCompagnie.id }}</td>
+										<td>{{ bureauCompagnie.ville.nom }}</td>
+										<td>{{ bureauCompagnie.adresse }}</td>
+										<td class="center" align="center">
+                                            <a href=""><i class="fa fa-pencil-square-o"></i></a>
+										</td>
+									</tr>
+                                  {% endfor %}
+								  </tbody>
+							 </table>
+
+						</div>
+					</div>
+				</div><!--/col-->
+
+			</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box">
+            <div data-original-title="" class="box-header">
+                <h2><i class="fa fa-file"></i><span class="break"></span>Fichiers</h2>
+            </div>
+            <div class="box-content">
+                <table id="" class="table table-striped table-bordered bootstrap-datatable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Télécharger</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for fichierCompagnie in fichiersCompagnie %}
+                        <tr>
+                            <td>{{ fichierCompagnie.id }}</td>
+                            <td>{{ fichierCompagnie.titre }}</td>
+                            <td>{{ fichierCompagnie.description }}</td>
+                            <td>{{ fichierCompagnie.type }}</td>
+                            <td align="center"><a href="{{ fichierCompagnie.url }}" target="_blank"> <i class="fa fa-upload"></i></a></td>
+                            <td>
+                                <button title="" data-placement="top" data-toggle="tooltip" id="{{ fichierCompagnie.id }}" class="btn btn-info" type="button" data-original-title="Modifier le fichier"><i class="fa fa-edit"></i></button>
+                                <button title="" data-placement="top" data-toggle="tooltip" id="{{ fichierCompagnie.id }}" class="btn btn-danger btn-confirm-suppression-fichier" type="button" data-original-title="Supprimer le fichier"><i class="fa fa-remove"></i></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block modals %}
+    {% include "::compagnie/modal/modifierContactInfos.html.twig"  with {'modalClass': 'popup-modification-contact-infos', 'modalTitle': 'Modification des informations de contact'} %}
+    {% include "::compagnie/modal/confirmeSuppression.html.twig"  with {'modalClass': 'popup-confirm-suppression-fichier', 'modalTitle': 'Suppression fichier'} %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/module_compagnie.js') }}"></script>
 {% endblock %}

@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * YvBateau
+ * Bateau
  */
-class YvBateau
+class Bateau
 {
     /**
      * @var integer
@@ -47,6 +47,10 @@ class YvBateau
      */
     private $typeBateau;
 
+    /**
+     * @var \AppBundle\Entity\Compagnie
+     */
+    private $compagnie;
 
     /**
      * Get id
@@ -63,7 +67,7 @@ class YvBateau
      *
      * @param string $nom
      *
-     * @return YvBateau
+     * @return Bateau
      */
     public function setNom($nom)
     {
@@ -87,7 +91,7 @@ class YvBateau
      *
      * @param integer $nbPlace
      *
-     * @return YvBateau
+     * @return Bateau
      */
     public function setNbPlace($nbPlace)
     {
@@ -111,7 +115,7 @@ class YvBateau
      *
      * @param string $longueur
      *
-     * @return YvBateau
+     * @return Bateau
      */
     public function setLongueur($longueur)
     {
@@ -135,7 +139,7 @@ class YvBateau
      *
      * @param string $largeur
      *
-     * @return YvBateau
+     * @return Bateau
      */
     public function setLargeur($largeur)
     {
@@ -159,7 +163,7 @@ class YvBateau
      *
      * @param integer $vitesse
      *
-     * @return YvBateau
+     * @return Bateau
      */
     public function setVitesse($vitesse)
     {
@@ -183,7 +187,7 @@ class YvBateau
      *
      * @param string $infos
      *
-     * @return YvBateau
+     * @return Bateau
      */
     public function setInfos($infos)
     {
@@ -207,7 +211,7 @@ class YvBateau
      *
      * @param \AppBundle\Entity\TypeBateau $typeBateau
      *
-     * @return YvBateau
+     * @return Bateau
      */
     public function setTypeBateau(\AppBundle\Entity\TypeBateau $typeBateau = null)
     {
@@ -224,6 +228,30 @@ class YvBateau
     public function getTypeBateau()
     {
         return $this->typeBateau;
+    }
+
+    /**
+     * Set compagnie
+     *
+     * @param \AppBundle\Entity\Compagnie $compagnie
+     *
+     * @return Bateau
+     */
+    public function setCompagnie(\AppBundle\Entity\Compagnie $compagnie = null)
+    {
+        $this->compagnie = $compagnie;
+
+        return $this;
+    }
+
+    /**
+     * Get compagnie
+     *
+     * @return \AppBundle\Entity\Compagnie
+     */
+    public function getCompagnie()
+    {
+        return $this->compagnie;
     }
 }
 

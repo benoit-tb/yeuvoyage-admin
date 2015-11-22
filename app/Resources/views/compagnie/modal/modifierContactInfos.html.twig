@@ -1,0 +1,23 @@
+{% extends 'common/modal/base.html.twig' %}
+{% block modalBody %}
+    <div class="form-group form-compagnie-description">
+        <label for="update-compagnie-nom">Compagnie</label>
+        <input type="text" class="form-control" id="update-compagnie-nom" value="{{ compagnie.nom }}" disabled="disabled">
+    </div>
+    <div class="form-group form-compagnie-description">
+        <label for="update-compagnie-description">Description</label>
+        <textarea class="form-control" id="update-compagnie-description">{{ compagnie.description }}</textarea>
+    </div>
+    <div class="form-group form-compagnie-contact">
+        <label for="update-compagnie-telephone">Téléphone</label>
+        <input type="text" class="form-control" id="update-compagnie-telephone" value="{{ compagnie.telephone }}">
+    </div>
+    <div class="form-group form-compagnie-contact">
+        <label for="update-compagnie-mail">Email</label>
+        <input type="text" class="form-control" id="update-compagnie-mail" value="{{ compagnie.mail }}">
+    </div>
+    <div class="form-group form-compagnie-contact">
+        <label for="update-compagnie-site">Site Web</label>
+        <input type="text" class="form-control" id="update-compagnie-site" value="{{ compagnie.site }}">
+    </div>
+{% endblock %}

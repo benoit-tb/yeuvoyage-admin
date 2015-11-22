@@ -1,0 +1,72 @@
+AppBundle\Entity\Bateau:
+    type: entity
+    table: yv_bateau
+    indexes:
+        id_type_bateau:
+            columns:
+                - id_type_bateau
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        nom:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        nbPlace:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: nb_place
+        longueur:
+            type: decimal
+            nullable: false
+            precision: 4
+            scale: 2
+        largeur:
+            type: decimal
+            nullable: false
+            precision: 4
+            scale: 2
+        vitesse:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        infos:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        typeBateau:
+            targetEntity: TypeBateau
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_bateau:
+                    referencedColumnName: id
+            orphanRemoval: false
+        compagnie:
+            targetEntity: Compagnie
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_compagnie:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

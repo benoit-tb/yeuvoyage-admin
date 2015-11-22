@@ -2,6 +2,7 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\Compagnie;
 use AppBundle\Service\AService;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -14,6 +15,7 @@ class CompagnieService extends AService{
 
     // Répository
     private $compagnieRepository;
+    private $bateauRepository;
 
     /**
      * Constructeur
@@ -22,6 +24,12 @@ class CompagnieService extends AService{
     public function __construct(ObjectManager $entityManager){
         $this->entityManager = $entityManager;
         $this->compagnieRepository = $this->entityManager->getRepository('AppBundle:Compagnie');
+        $this->ressourceRepository = $this->entityManager->getRepository('AppBundle:Ressource');
+        $this->bateauRepository = $this->entityManager->getRepository('AppBundle:Bateau');
+    }
+
+    public function getCompagnieById($id){
+        return $this->compagnieRepository->findOneBy(array('id' => $id));
     }
 
     /**
@@ -32,4 +40,49 @@ class CompagnieService extends AService{
     public function getCompagnies(){
         return $this->compagnieRepository->findAll();
     }
+
+    /**
+     * @param $compagnieId
+     * @return array|null
+     */
+    public function getBateauxCompagnie($compagnieId){
+        $bateauxCompagnie = null;
+        $compagnie = $this->getCompagnieById($compagnieId);
+
+        if (!is_null($compagnie) && $compagnie instanceof Compagnie){
+            $bateauxCompagnie = $this->bateauRepository->findBy(array('compagnie' => $compagnie));
+        }
+
+        return $bateauxCompagnie;
+    }
+
+    /**
+     * @param $compagnieId
+     */
+    public function getBureauxCompagnie($compagnieId){
+        $bureauxCompagnie = null;
+        $compagnie = $this->getCompagnieById($compagnieId);
+
+        if (!is_null($compagnie) && $compagnie instanceof Compagnie){
+            $bureauxCompagnie = $compagnie->getGares();
+        }
+
+        return $bureauxCompagnie;
+    }
+
+    public function getFichiersCompagnie($compagnieId){
+        $fichiersCompagnie = null;
+        $compagnie = $this->getCompagnieById($compagnieId);
+
+        if (!is_null($compagnie) && $compagnie instanceof Compagnie){
+            $fichiersCompagnie = $this->ressourceRepository->findBy(array('compagnie' => $compagnie));
+        }
+
+        return $fichiersCompagnie;
+    }
+
+    public function getFichierCompagnieById($id){
+        return $this->ressourceRepository->findOneBy(array('id' => $id));
+    }
+
 }

@@ -45,19 +45,19 @@ class Gare
     /**
      * @var \AppBundle\Entity\Ville
      */
-    private $idVille;
+    private $ville;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $idCompagnie;
+    private $compagnies;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idCompagnie = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->compagnies = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -215,61 +215,61 @@ class Gare
     }
 
     /**
-     * Set idVille
+     * Set ville
      *
-     * @param \AppBundle\Entity\Ville $idVille
+     * @param \AppBundle\Entity\Ville $ville
      *
      * @return Gare
      */
-    public function setIdVille(\AppBundle\Entity\Ville $idVille = null)
+    public function setVille(\AppBundle\Entity\Ville $ville = null)
     {
-        $this->idVille = $idVille;
+        $this->ville = $ville;
 
         return $this;
     }
 
     /**
-     * Get idVille
+     * Get ville
      *
      * @return \AppBundle\Entity\Ville
      */
-    public function getIdVille()
+    public function getVille()
     {
-        return $this->idVille;
+        return $this->ville;
     }
 
     /**
-     * Add idCompagnie
+     * Add compagnie
      *
-     * @param \AppBundle\Entity\Compagnie $idCompagnie
+     * @param \AppBundle\Entity\Compagnie $compagnie
      *
      * @return Gare
      */
-    public function addIdCompagnie(\AppBundle\Entity\Compagnie $idCompagnie)
+    public function addCompagnie(\AppBundle\Entity\Compagnie $compagnie)
     {
-        $this->idCompagnie[] = $idCompagnie;
+        $this->compagnies[] = $compagnie;
 
         return $this;
     }
 
     /**
-     * Remove idCompagnie
+     * Remove compagnie
      *
-     * @param \AppBundle\Entity\Compagnie $idCompagnie
+     * @param \AppBundle\Entity\Compagnie $compagnie
      */
-    public function removeIdCompagnie(\AppBundle\Entity\Compagnie $idCompagnie)
+    public function removeCompagnie(\AppBundle\Entity\Compagnie $compagnie)
     {
-        $this->idCompagnie->removeElement($idCompagnie);
+        $this->compagnies->removeElement($compagnie);
     }
 
     /**
-     * Get idCompagnie
+     * Get compagnies
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getIdCompagnie()
+    public function getCompagnies()
     {
-        return $this->idCompagnie;
+        return $this->compagnies;
     }
 }
 

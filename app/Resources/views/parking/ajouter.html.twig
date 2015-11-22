@@ -39,3 +39,14 @@
         </div><!--/col-->
     </div>
 {% endblock %}
+
+
+{% block modals %}
+    {% include "::parking/modal/mapModif.html.twig"  with {'modalClass': 'popup-map-parking', 'modalTitle': 'Aperçu du parking' } %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript" src="{{ asset('js/parking.js') }}"></script>
+{% endblock %}

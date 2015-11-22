@@ -42,11 +42,11 @@ AppBundle\Entity\Compagnie:
             options:
                 fixed: false
     manyToMany:
-        idGare:
+        gares:
             targetEntity: Gare
             cascade: {  }
             fetch: LAZY
-            mappedBy: idCompagnie
+            mappedBy: compagnies
             inversedBy: null
             joinTable: null
             orderBy: null
