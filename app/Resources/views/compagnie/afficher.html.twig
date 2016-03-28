@@ -42,8 +42,8 @@
             </div>
             <div class="box-content">
                 <p><i class="fa fa-phone"></i>{{ compagnie.telephone }}</p>
-                <p><i class="fa fa-envelope"></i>{{ compagnie.mail }}</p>
-                <p><i class="fa fa-globe"></i>{{ compagnie.site }}</p>
+                <p><i class="fa fa-envelope"></i><a href="mailto:{{ compagnie.mail }}">{{ compagnie.mail }}</a></p>
+                <p><i class="fa fa-globe"></i><a href="http://{{ compagnie.site }}" target="_blank">{{ compagnie.site }}</a></p>
             </div>
         </div>
     </div>
@@ -78,9 +78,10 @@
 										<td>{{ bateauCompagnie.nom }}</td>
 										<td>{{ bateauCompagnie.typeBateau.nom }}</td>
 										<td>{{ bateauCompagnie.nbPlace }}</td>
-										<td align="center">
-											<a href=""><i class="fa fa-pencil-square-o"></i></a>
-										</td>
+										<td nowrap align="center">
+                                            <button data-placement="top" data-toggle="tooltip" id="{{ bateauCompagnie.id }}" class="btn btn-info btn-modification-bateau" type="button" data-original-title="Modifier les informations"><i class="fa fa-edit"></i></button>
+                                            <button data-placement="top" data-toggle="tooltip" id="{{ bateauCompagnie.id }}" class="btn btn-danger btn-confirm-suppression-bateau" type="button" data-original-title="Supprimer le bateau"><i class="fa fa-remove"></i></button>
+                                        </td>
 									</tr>
                                     {% endfor %}
 								  </tbody>
@@ -115,8 +116,9 @@
 										<td>{{ bureauCompagnie.id }}</td>
 										<td>{{ bureauCompagnie.ville.nom }}</td>
 										<td>{{ bureauCompagnie.adresse }}</td>
-										<td class="center" align="center">
-                                            <a href=""><i class="fa fa-pencil-square-o"></i></a>
+										<td align="center" nowrap>
+                                            <button data-placement="top" data-toggle="tooltip" id="{{ bureauCompagnie.id }}" class="btn btn-info btn-modification-bureau" type="button" data-original-title="Modifier les informations"><i class="fa fa-edit"></i></button>
+                                            <button data-placement="top" data-toggle="tooltip" id="{{ bureauCompagnie.id }}" class="btn btn-danger btn-confirm-suppression-bureau" type="button" data-original-title="Supprimer le bureau"><i class="fa fa-remove"></i></button>
 										</td>
 									</tr>
                                   {% endfor %}
@@ -156,8 +158,8 @@
                             <td>{{ fichierCompagnie.type }}</td>
                             <td align="center"><a href="http://{{ fichierCompagnie.url }}" target="_blank"> <i class="fa fa-upload"></i></a></td>
                             <td>
-                                <button title="" data-placement="top" data-toggle="tooltip" id="{{ fichierCompagnie.id }}" class="btn btn-info btn-modification-fichier" type="button" data-original-title="Modifier le fichier"><i class="fa fa-edit"></i></button>
-                                <button title="" data-placement="top" data-toggle="tooltip" id="{{ fichierCompagnie.id }}" class="btn btn-danger btn-confirm-suppression-fichier" type="button" data-original-title="Supprimer le fichier"><i class="fa fa-remove"></i></button>
+                                <button data-placement="top" data-toggle="tooltip" id="{{ fichierCompagnie.id }}" class="btn btn-info btn-modification-fichier" type="button" data-original-title="Modifier le fichier"><i class="fa fa-edit"></i></button>
+                                <button data-placement="top" data-toggle="tooltip" id="{{ fichierCompagnie.id }}" class="btn btn-danger btn-confirm-suppression-fichier" type="button" data-original-title="Supprimer le fichier"><i class="fa fa-remove"></i></button>
                             </td>
                         </tr>
                     {% endfor %}
@@ -172,6 +174,7 @@
 
 {% block modals %}
     {% include "::compagnie/modal/modifierContactInfos.html.twig"  with {'modalClass': 'popup-modification-contact-infos', 'modalTitle': 'Modification des informations de contact'} %}
+    {% include "::compagnie/modal/modifierBateau.html.twig"  with {'modalClass': 'popup-modification-bateau', 'modalTitle': 'Modification des informations'} %}
     {% include "::compagnie/modal/modifierFichierCompagnie.html.twig"  with {'modalClass': 'popup-modification-fichier', 'modalTitle': 'Modification du fichier'} %}
     {% include "::compagnie/modal/confirmeSuppression.html.twig"  with {'modalClass': 'popup-confirm-suppression-fichier', 'modalTitle': 'Suppression fichier'} %}
 {% endblock %}

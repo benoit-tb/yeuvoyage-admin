@@ -115,4 +115,35 @@ $(document).ready(function() {
 
         $('.popup-modification-fichier').modal('hide');
     });
+
+
+    // Pop up de confirmation de suppression des fichiers
+    $('.btn-modification-bateau').click(function() {
+        var idBateau = $(this).attr('id');
+        var url = Routing.generate('yeu_voyage_compagnie_bateau_detail');
+
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: {
+                bateau_id: idBateau
+            },
+            success:function(data) {
+                $(".popup-modification-bateau #update-bateau-nom").val(data.nom);
+                //$(".popup-modification-bateau #update-bateau-type").val(data.type);
+                $(".popup-modification-bateau #update-bateau-longueur").val(data.longueur);
+                $(".popup-modification-bateau #update-bateau-largeur").val(data.largeur);
+                $(".popup-modification-bateau #update-bateau-vitesse").val(data.vitesse);
+                $(".popup-modification-bateau #update-bateau-infos").val(data.infos);
+                $(".popup-modification-bateau #update-bateau-nb-places").val(data.nb_places);
+                $(".popup-modification-actualite #update-bateau-type option").filter(function() {
+                    return $(this).text() == data.type_id;
+                }).prop('selected', true);
+                $(".popup-modification-bateau #bateau-id").val(idBateau);
+            }
+        });
+
+
+        $('.popup-modification-bateau').modal('show');
+    });
 });

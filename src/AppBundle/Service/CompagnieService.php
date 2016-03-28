@@ -15,7 +15,9 @@ class CompagnieService extends AService{
 
     // Répository
     private $compagnieRepository;
+    private $ressourceRepository;
     private $bateauRepository;
+    private $bateauTypeRepository;
 
     /**
      * Constructeur
@@ -26,6 +28,7 @@ class CompagnieService extends AService{
         $this->compagnieRepository = $this->entityManager->getRepository('AppBundle:Compagnie');
         $this->ressourceRepository = $this->entityManager->getRepository('AppBundle:Ressource');
         $this->bateauRepository = $this->entityManager->getRepository('AppBundle:Bateau');
+        $this->bateauTypeRepository = $this->entityManager->getRepository('AppBundle:TypeBateau');
     }
 
     public function getCompagnieById($id){
@@ -85,4 +88,18 @@ class CompagnieService extends AService{
         return $this->ressourceRepository->findOneBy(array('id' => $id));
     }
 
+    public function getBateauById($id){
+        return $this->bateauRepository->findOneBy(array('id' => $id));
+    }
+
+    public function getBateauTypesCompagnie($compagnieId){
+        $bateauTypesCompagnie = null;
+        $compagnie = $this->getCompagnieById($compagnieId);
+
+        if (!is_null($compagnie) && $compagnie instanceof Compagnie){
+            $bateauTypesCompagnie = $this->bateauTypeRepository->findBy(array('compagnie' => $compagnie));
+        }
+
+        return $bateauTypesCompagnie;
+    }
 }

@@ -152,6 +152,12 @@ yeu_voyage_compagnie_fichier_modifier:
     defaults:  { _controller: AppBundle:Compagnie:modifierFichier }
     options:
         expose: true
+
+yeu_voyage_compagnie_bateau_detail:
+    path:      /compagnie/bateau/detail/
+    defaults:  { _controller: AppBundle:Compagnie:detailBateau }
+    options:
+        expose: true
 #
 # Routing partie gestion des parkings
 #

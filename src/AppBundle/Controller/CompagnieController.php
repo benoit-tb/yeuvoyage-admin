@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Bateau;
 use AppBundle\Entity\Compagnie;
 use AppBundle\Entity\Ressource;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -26,12 +27,14 @@ class CompagnieController extends AController
         $bateauxCompagnie = $compagnieService->getBateauxCompagnie($compagnieId);
         $bureauxCompagnie = $compagnieService->getBureauxCompagnie($compagnieId);
         $fichiersCompagnie = $compagnieService->getFichiersCompagnie($compagnieId);
+        $bateauTypesCompagnie = $compagnieService->getBateauTypesCompagnie($compagnieId);
 
         return $this->render('compagnie/afficher.html.twig', array(
             'compagnie' => $compagnie,
             'bateauxCompagnie' => $bateauxCompagnie,
             'bureauxCompagnie' => $bureauxCompagnie,
-            'fichiersCompagnie' => $fichiersCompagnie));
+            'fichiersCompagnie' => $fichiersCompagnie,
+            'bateauTypesCompagnie' => $bateauTypesCompagnie));
     }
 
     /**
@@ -116,6 +119,28 @@ class CompagnieController extends AController
 
                 $this->addFlash('success', 'Les informations sur le fichier ont été modifiées.');
                 return new JsonResponse(array('succes' => "1", 'error' => '0'));
+            }
+        }
+        return new JsonResponse(array('succes' => "0", 'error' => '1'));
+    }
+
+
+    public function detailBateauAction(Request $request){
+        if ($request->isMethod ( 'POST' )) {
+            $compagnieService = $this->get('compagnie_service');
+
+            $bateau= $compagnieService->getBateauById($request->request->get('bateau_id'));
+
+            if (!is_null($bateau) && $bateau instanceof Bateau){
+                $result['nom'] = $bateau->getNom();
+                $result['type_id'] = $bateau->getTypeBateau()->getId();
+                $result['type'] = $bateau->getTypeBateau()->getNom();
+                $result['nb_places'] = $bateau->getNbPlace();
+                $result['longueur'] = $bateau->getLongueur();
+                $result['largeur'] = $bateau->getLargeur();
+                $result['vitesse'] = $bateau->getVitesse();
+                $result['infos'] = $bateau->getInfos();
+                return new JsonResponse($result);
             }
         }
         return new JsonResponse(array('succes' => "0", 'error' => '1'));

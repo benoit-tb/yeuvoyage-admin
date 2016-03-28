@@ -1,0 +1,39 @@
+{% extends 'common/modal/base.html.twig' %}
+{% block modalBody %}
+    <div class="form-group">
+        <label for="update-bateau-nom">Nom</label>
+        <input type="text" class="form-control" id="update-bateau-nom" value="">
+    </div>
+    <div class="form-group">
+        <label for="update-bateau-type">Type</label>
+        <select id="update-bateau-type" name="update-bateau-type" class="form-control">
+            {% for bateauTypeCompagnie in bateauTypesCompagnie %}
+            <option value="{{ bateauTypeCompagnie.id }}">{{ bateauTypeCompagnie.nom }} (durée {{ bateauTypeCompagnie.dureeTraversee }} min)</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-inline form-group">
+        <div class="form-group">
+            <label for="update-bateau-longueur">Longueur</label>
+            <input type="text" class="form-control" id="update-bateau-longueur" value="">
+        </div>
+        <div class="form-group">
+            <label for="update-bateau-largeur">Largeur</label>
+            <input type="text" class="form-control" id="update-bateau-largeur" value="">
+        </div>
+    </div>
+    <div class="form-inline form-group">
+        <div class="form-group">
+            <label for="update-bateau-vitesse">Vitesse (noeuds)</label>
+            <input type="number" class="form-control" id="update-bateau-vitesse" value="">
+        </div>
+        <div class="form-group">
+            <label for="update-bateau-nb-places">Nb places</label>
+            <input type="number" class="form-control" id="update-bateau-nb-places" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="update-bateau-infos">Infos</label>
+        <textarea class="form-control" id="update-bateau-infos"></textarea>
+    </div>
+{% endblock %}
